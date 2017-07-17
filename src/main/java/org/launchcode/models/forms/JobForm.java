@@ -27,12 +27,46 @@ public class JobForm {
         with correct validation attributes and display names.
         Don't forget to add getters and setters
      */
-
+    @NotNull
     private ArrayList<Employer> employers;
-    private ArrayList<Location> locations;
-    private ArrayList<CoreCompetency> coreCompetencies;
-    private ArrayList<PositionType> positionTypes;
 
+    @NotNull
+//    private int employerId = employer.getId();
+    private ArrayList<Location> locations;
+    private int locationId;
+
+    @NotNull
+    private ArrayList<CoreCompetency> coreCompetencies;
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
+    public int getCoreCompetencyId() {
+        return coreCompetencyId;
+    }
+
+    public void setCoreCompetencyId(int coreCompetencyId) {
+        this.coreCompetencyId = coreCompetencyId;
+    }
+
+    public int getPositionTypeId() {
+        return positionTypeId;
+    }
+
+    public void setPositionTypeId(int positionTypeId) {
+        this.positionTypeId = positionTypeId;
+    }
+
+    private int coreCompetencyId;
+    @NotNull
+    private ArrayList<PositionType> positionTypes;
+    private int positionTypeId;
+    @NotNull
     public JobForm() {
 
         JobData jobData = JobData.getInstance();
@@ -42,7 +76,9 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
-
+        locations = jobData.getLocations().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
     }
 
     public String getName() {
@@ -60,6 +96,7 @@ public class JobForm {
     public void setEmployerId(int employerId) {
         this.employerId = employerId;
     }
+
 
     public ArrayList<Employer> getEmployers() {
         return employers;
